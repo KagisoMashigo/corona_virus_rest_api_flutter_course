@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:corona_virus_rest_api_flutter_course/app/repositories/data_repository.dart';
 import 'package:corona_virus_rest_api_flutter_course/app/repositories/endpoints_data.dart';
 import 'package:corona_virus_rest_api_flutter_course/app/services/api.dart';
@@ -21,13 +23,23 @@ class _DashboardState extends State<Dashboard> {
   }
 
   Future<void> _updateData() async {
-    final dataRepository = Provider.of<DataRepository>(context, listen: false);
-    final cases = await dataRepository.getAllEndpointsData();
-    setState(() => _endpointsData = cases);
+    try {
+      final dataRepository =
+          Provider.of<DataRepository>(context, listen: false);
+      final cases = await dataRepository.getAllEndpointsData();
+      setState(() => _endpointsData = cases);
+    } on SocketException catch (e) {
+      print(e);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final formatted = LastUpdatedFormatter(
+      lastUpdated: _endpointsData != null
+          ? _endpointsData.values[Endpoint.cases].date
+          : null,
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text('Covid Tracker'),
@@ -37,10 +49,8 @@ class _DashboardState extends State<Dashboard> {
         child: ListView(
           children: <Widget>[
             LastUpdatedStatusText(
-                text: _endpointsData != null
-                    ? _endpointsData.values[Endpoint.cases].date?.toString() ??
-                        ''
-                    : ''),
+              text: formatted.lastUpdatedStatusText(),
+            ),
             for (var endpoint in Endpoint.values)
               EndpointCard(
                 endpoint: endpoint,

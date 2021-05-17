@@ -4,8 +4,12 @@ import 'package:corona_virus_rest_api_flutter_course/app/services/api_service.da
 import 'package:corona_virus_rest_api_flutter_course/app/ui/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  Intl.defaultLocale = 'en_GB';
+  await initializeDateFormatting();
   runApp(MyApp());
 }
 
