@@ -5,6 +5,7 @@ import 'package:corona_virus_rest_api_flutter_course/app/repositories/endpoints_
 import 'package:corona_virus_rest_api_flutter_course/app/services/api.dart';
 import 'package:corona_virus_rest_api_flutter_course/app/ui/endpoint_card.dart';
 import 'package:corona_virus_rest_api_flutter_course/app/ui/last_updated_status_text.dart';
+import 'package:corona_virus_rest_api_flutter_course/app/ui/show_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,8 +29,20 @@ class _DashboardState extends State<Dashboard> {
           Provider.of<DataRepository>(context, listen: false);
       final cases = await dataRepository.getAllEndpointsData();
       setState(() => _endpointsData = cases);
-    } on SocketException catch (e) {
-      print(e);
+    } on SocketException catch (_) {
+      showAlertDialog(
+        context: context,
+        title: 'Connection Error',
+        content: 'Could not retrieve data, please try again later.',
+        defaultActionText: 'OK',
+      );
+    } catch (_) {
+      showAlertDialog(
+        context: context,
+        title: 'Unknown Error',
+        content: 'Please contact the developer or try again later.',
+        defaultActionText: 'OK',
+      );
     }
   }
 
