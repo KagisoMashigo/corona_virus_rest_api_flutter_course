@@ -1,5 +1,6 @@
 import 'package:corona_virus_rest_api_flutter_course/app/services/api_keys.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 enum Endpoint {
   cases,
@@ -13,7 +14,7 @@ class API {
   API({@required this.apiKey});
   final String apiKey;
 
-  factory API.sandbox() => API(apiKey: APIKeys.ncovSandboxKey);
+  factory API.sandbox() => API(apiKey: env['ncovSandboxKey']);
 
   static final String host = 'ncov2019-admin.firebaseapp.com';
 
