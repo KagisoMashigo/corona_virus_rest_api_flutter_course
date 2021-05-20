@@ -1,0 +1,3 @@
+environment:
+  vars:             # Define your environment variables here
+    ncovSandboxKey: 9eb5a29c1dfb5f0ddcf571f2960553e22693ecf1479d8bfcf6b1b9106be4f403
