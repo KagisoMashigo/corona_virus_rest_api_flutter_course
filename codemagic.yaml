@@ -1,3 +1,31 @@
-environment:
-  vars:             # Define your environment variables here
-    ncovSandboxKey: 9eb5a29c1dfb5f0ddcf571f2960553e22693ecf1479d8bfcf6b1b9106be4f403
+workflows:
+  my-workflow:
+    name: My workflow name
+    instance_type: mac_mini
+    max_build_duration: 60
+    environment:
+      vars:             # Define your environment variables here
+        ncovSandboxKey: 9eb5a29c1dfb5f0ddcf571f2960553e22693ecf1479d8bfcf6b1b9106be4f403
+      flutter: stable
+      xcode: latest
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: '*'
+          include: true
+          source: true
+      cancel_previous_builds: false
+    scripts:
+      - ...
+    artifacts:
+      - build/**/outputs/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - testerkagiso@gmail.com
+      scripts:
+        - echo 'Post-publish script'
