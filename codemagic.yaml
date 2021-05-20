@@ -28,4 +28,4 @@ workflows:
         recipients:
           - testerkagiso@gmail.com
       scripts:
-        - echo 'Post-publish script'
+        - echo "ncovSandboxKey = $ncovSandboxKey" | base64 --decode > .env

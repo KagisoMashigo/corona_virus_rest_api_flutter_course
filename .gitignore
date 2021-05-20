@@ -51,3 +51,4 @@ app.*.map.json
 #API keys
 /lib/app/services/api_keys.dart
 .env*
+boris.txt
