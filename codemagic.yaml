@@ -20,7 +20,7 @@ workflows:
           source: true
       cancel_previous_builds: false
     scripts:
-      - ...
+      - echo "ncovSandboxKey = $ncovSandboxKey" | base64 --decode > .env
     artifacts:
       - build/**/outputs/**/*.aab
     publishing:
@@ -28,4 +28,5 @@ workflows:
         recipients:
           - testerkagiso@gmail.com
       scripts:
-        - echo "ncovSandboxKey = $ncovSandboxKey" | base64 --decode > .env
+        - echo 'Post-publish script'
+
