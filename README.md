@@ -1,16 +1,19 @@
-# corona_virus_rest_api_flutter_course
+# Coronavirus Rest API App
 
-A new Flutter project.
+A corona virus tracking app built for Android and iOS with Flutter and Dart.
 
-## Getting Started
+## Getting Started:
 
-This project is a starting point for a Flutter application.
+Install all dependencies (using flutter pub get).
+## Dependencies:
 
-A few resources to get you started if this is your first Flutter project:
+  cupertino_icons: ^1.0.2
+  dotenv: ^3.0.0
+  http: 0.12.0+4
+  intl: ^0.17.0
+  provider: ^5.0.0
+  shared_preferences: ^2.0.5
+  flutter_dotenv: ^3.1.0
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshot
+!["Landing Page"](https://github.com/KagisoMashigo/corona_virus_rest_api_flutter_course/blob/main/assets/docs/Screen%20Shot%202021-08-04%20at%2011.38.55.png?raw=true)
