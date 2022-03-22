@@ -4,7 +4,7 @@ A corona virus tracking app built for Android and iOS with Flutter and Dart.
 
 ## Getting Started:
 
-Install all dependencies (using flutter pub get).
+Install all dependencies (using flutter pub get) then run the app from your IDE.
 ## Dependencies:
   - cupertino_icons: ^1.0.2
   - dotenv: ^3.0.0
